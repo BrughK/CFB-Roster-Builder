@@ -1,18 +1,190 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <link rel="stylesheet" href="../../public/css/style.css">
+  <link rel="stylesheet" href="https://unpkg.com/bulma-spacing">
   <title>CFB Roster Builder</title>
 </head>
+{{!-- Nav bar at top --}}
+<nav class="navbar is-transparent p-2">
+  <div class="navbar-brand">
+    <img class="has-padding-right-12" src="https://accsports.com/wp-content/uploads/2015/01/NCAA-Logo.jpg" alt="NCAA Logo" width="112" height="58">
+    <div class="navbar-burger" data-target="navbarExampleTransparentExample">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+{{!-- Menu Dropdown --}}
+  <div id="navbarExampleTransparentExample" class="navbar-menu">
+    <div class="navbar-start">
+      <a class="navbar-item" href="">
+        Home
+      </a>
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link" href="">
+          Menu
+        </a>
+        <div class="navbar-dropdown is-boxed">
+          <a class="navbar-item" href="">
+            Your Roster
+          </a>
+          <a class="navbar-item" href="">
+            New Roster
+          </a>
+          <a class="navbar-item" href="">
+            Check out Stats
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="navbar-end">
+      <div class="navbar-item">
+        <div class="buttons">
+          <a class="button is-link"><strong>Sign up</strong></a>
+          <a class="button is-link"><strong>Login</strong></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
 <body>
+  {{!-- Hero Banner --}}
+  <section class="hero is-medium is-link">
+      <div class="hero-body">
+        <div class="container has-text-centered">
+          <h1 class="title">
+            College Football Roster Builder
+          </h1>
+        </div>
+      </div>
+    </section>
 
+{{!-- Dev Section --}}
+<section class="section">
+  <div class="container">
+    <h2 class="title">Developers</h2>
+    <p class="subtitle">Meet the team!</p>
+      <div class="columns">
+        <div class="column">
+          {{!-- Kasen Card --}}
+          <div class="card">
+            <div class="card-image">
+              <figure class="image is-4by4">
+                <img src="https://kinsta.com/wp-content/uploads/2018/04/what-is-github-1-1.png" alt="Placeholder image">
+              </figure>
+            </div>
+            <div class="card-content">
+              <div class="media">
+                <div class="media-left">
+                  <figure class="image is-48x48">
+                    <img src="https://avatars.githubusercontent.com/u/48495917?v=4" alt="Placeholder image">
+                  </figure>
+                </div>
+                <div class="media-content">
+                  <p class="title is-4">Kasen Brugh</p>
+                  <p class="subtitle is-6"><a class="has-text-dark" href="https://github.com/BrughK" target="_blank" rel="noopener noreferrer">@BrughK</a></p>
+                </div>
+              </div>
 
+              <div class="content">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Phasellus nec iaculis mauris.
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="column">
+          {{!-- Jacob Card --}}
+          <div class="card">
+            <div class="card-image">
+              <figure class="image is-4by4">
+                <img src="https://kinsta.com/wp-content/uploads/2018/04/what-is-github-1-1.png" alt="Placeholder image">
+              </figure>
+            </div>
+            <div class="card-content">
+              <div class="media">
+                <div class="media-left">
+                  <figure class="image is-48x48">
+                    <img src="https://avatars.githubusercontent.com/u/55941541?v=4" alt="Placeholder image">
+                  </figure>
+                </div>
+                <div class="media-content">
+                  <p class="title is-4">Jacob Hester</p>
+                  <p class="subtitle is-6"><a class="has-text-dark" href="https://github.com/jakester101" target="_blank" rel="noopener noreferrer">@jakester101</a></p>
+                </div>
+              </div>
 
+              <div class="content">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Phasellus nec iaculis mauris.
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="column">
+          {{!-- Junho Card --}}
+          <div class="card">
+            <div class="card-image">
+              <figure class="image is-4by4">
+                <img src="https://kinsta.com/wp-content/uploads/2018/04/what-is-github-1-1.png" alt="Placeholder image">
+              </figure>
+            </div>
+            <div class="card-content">
+              <div class="media">
+                <div class="media-left">
+                  <figure class="image is-48x48">
+                    <img src="https://avatars.githubusercontent.com/u/109125494?v=4" alt="Placeholder image">
+                  </figure>
+                </div>
+                <div class="media-content">
+                  <p class="title is-4">Junho Kim</p>
+                  <p class="subtitle is-6"><a class="has-text-dark" href="https://github.com/gengamask" target="_blank" rel="noopener noreferrer">@gengamask</a></p>
+                </div>
+              </div>
 
+              <div class="content">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Phasellus nec iaculis mauris.
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="column">
+          {{!-- Noah Card --}}
+          <div class="card">
+            <div class="card-image">
+              <figure class="image is-4by4">
+                <img src="https://kinsta.com/wp-content/uploads/2018/04/what-is-github-1-1.png" alt="Placeholder image">
+              </figure>
+            </div>
+            <div class="card-content">
+              <div class="media">
+                <div class="media-left">
+                  <figure class="image is-48x48">
+                    <img src="https://avatars.githubusercontent.com/u/120499139?v=4" alt="Placeholder image">
+                  </figure>
+                </div>
+                <div class="media-content">
+                  <p class="title is-4">Noah Berg</p>
+                  <p class="subtitle is-6"><a class="has-text-dark" href="https://github.com/Noahwberg" target="_blank" rel="noopener noreferrer">@Noahwberg</a></p>
+                </div>
+              </div>
 
-
-
+              <div class="content">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Phasellus nec iaculis mauris.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 </body>
 </html>
