@@ -16,7 +16,11 @@ User.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    name: {
+    firstname: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    lastname: {
       type: DataTypes.STRING,
       allowNull: false,
     },
@@ -37,11 +41,23 @@ User.init(
     },
   },
   {
-    sequelize,
-    timestamps: false,
-    freezeTableName: true,
-    underscored: true,
-    modelName: 'user',
+    hooks: {
+      beforeCreate: async (newPw) => {
+        newPw.password = await bcrypt.hash(newPw.password, 10);
+        return newPw;
+      },
+      beforeUpdate: async (updatePw) => {
+        if (updatePw.password){
+        updatePw.password = await bcrypt.hash(updatePw.password, 10);
+        }
+        return updatePw
+      },
+    },
+      sequelize,
+      timestamps: false,
+      freezeTableName: true,
+      underscored: true,
+      modelName: 'user',
   }
 );
 

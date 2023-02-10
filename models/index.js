@@ -2,31 +2,38 @@ const User = require('./User');
 const Teams = require('./Teams');
 const Players = require('./Players');
 const Roster = require('./Roster');
+const { Player } = require('cfb.js');
 
+// user only gets to have one roster. (one to one)
+User.hasOne(Roster, {
+   foreignKey: 'user_id',
+   onDelete: 'CASCADE',
+})
 
-/*------------------------------------------------------
+// roster belongs to user.
+Roster.belongsTo(User, {
+   foreignKey: 'user_id',
+})
 
-*Reference for relationships (challenge 13)* :
+// Teams have many players. (Many to one)
+Teams.hasMany(Players, {
+   foreignKey: 'teams_id',
+   onDelete:'CASCADE',
+})
 
-// Products belongsTo Category
-Product.belongsTo(Category, {
-   foreignKey: 'category_id' });
+//players belongs to teams.
+Players.belongsTo(Teams, {
+   foreignKey: 'teams_id',
+})
 
-// Categories have many Products
-Category.hasMany(Product, {
-   foreignKey: 'category_id' });
+Roster.hasMany(Players, {
+   foreignKey: 'roster_id',
+   onDelete: "CASCADE",
+})
 
-// Products belongToMany Tags (through ProductTag)
-Product.belongsToMany(Tag, {
-   through: ProductTag,
-   foreignKey: 'product_id' });
-
-// Tags belongToMany Products (through ProductTag)
-Tag.belongsToMany(Product, {
-   through: ProductTag,
-   foreignKey: 'tag_id' });
-
--------------------------------------------------------*/
+Players.belongsTo(Roster, {
+   foreignKey: 'roster_id',
+})
 
 
 
@@ -36,3 +43,4 @@ module.exports = {
      Players,
      Roster,
 };
+
