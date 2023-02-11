@@ -1,6 +1,5 @@
-const APIKey = 'Ztn0VfU0cfZ0GaF/wDYhPTgQqXOvGa6mEb1ht26W0RyYW3aIg9BppDJW/ZC4KMza';
-
-
+//require('dotenv').config();
+const apiKey = process.env.API_KEY;
 const fs = require('fs');
 var cfb = require('cfb.js');
 var defaultClient = cfb.ApiClient.instance;
@@ -8,14 +7,16 @@ var defaultClient = cfb.ApiClient.instance;
 
 // Configure API key authorization: ApiKeyAuth
 var ApiKeyAuth = defaultClient.authentications['ApiKeyAuth'];
-ApiKeyAuth.apiKey = `Bearer ${ APIKey }`;
+ApiKeyAuth.apiKey = apiKey;
+
 
 var apiInstance = new cfb.PlayersApi();
 
 module.exports = { getPlayer:
  async function getPlayer(a, b, c, d){
-    var name = `${a}`; // String | Term to search on
-    var opts = { 
+    
+    let name = `${a}`; // String | Term to search on
+    let opts = { 
     'position': `${b}`, // String | Position abbreviation filter
     'team': `${c}`, // String | Team filter
     'year': `${d}` // Not used and handed an empty string
