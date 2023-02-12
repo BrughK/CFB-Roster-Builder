@@ -7,15 +7,12 @@ Roster.init(
     {
         id: {
             type: DataTypes.INTEGER,
-            allolwNull: false,
+            allowNull: false,
             primaryKey: true,
             autoIncrement: true,
         },
-        roster_player: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
-        user_id:{
+        
+        userId:{
             type: DataTypes.INTEGER,
             references: {
                 model: "user",
@@ -32,4 +29,4 @@ Roster.init(
     }
 )
 
-module.export = Roster; 
+module.exports = Roster; 

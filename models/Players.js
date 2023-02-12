@@ -24,25 +24,23 @@ Players.init(
             allolwNull: false,
         },
         position: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.STRING,
             allolwNull: false,
         },
-        team_id: {
+        teamsId: {
             type: DataTypes.INTEGER,
-            allolwNull: false,
             references: {
-                model: "teams",
-                key: "id",
+              model:"teams",
+              key: "id",
             }
         },
-        roster_id: {
+        rosterId: {
             type: DataTypes.INTEGER,
-            allolwNull: false,
             references: {
-                model: "roster",
-                key: "id",
+              model:"roster",
+              key: "id",
             }
-        }
+        },
     },
     {
         sequelize,
@@ -53,4 +51,4 @@ Players.init(
     }
 )
 
-module.export = Players; 
+module.exports = Players;

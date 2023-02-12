@@ -11,10 +11,11 @@ Teams.init(
             primaryKey: true,
             autoIncrement: true,
         },
-        team_name: {
+        
+        teamName:{
             type: DataTypes.STRING,
             allowNull: false,
-        }
+        },
     },
     {
         sequelize,
@@ -24,3 +25,5 @@ Teams.init(
         modelName: 'teams',
     }
 )
+
+module.exports = Teams; 
