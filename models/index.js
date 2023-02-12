@@ -4,30 +4,36 @@ const Players = require('./Players');
 const Roster = require('./Roster');
 
 
-/*------------------------------------------------------
+// user only gets to have one roster. (one to one)
+User.hasOne(Roster, {
+   foreignKey: 'category_id',
+   onDelete: 'CASCADE',
+ })
 
-*Reference for relationships (challenge 13)* :
+// roster belongs to user.2
+Roster.belongsTo(User, {
+   foreignKey: 'user_id',
+})
 
-// Products belongsTo Category
-Product.belongsTo(Category, {
-   foreignKey: 'category_id' });
+// Teams have many players. (Many to one)
+Teams.hasMany(Players, {
+   foreignKey: 'teams_id',
+   onDelete:'CASCADE',
+})
 
-// Categories have many Products
-Category.hasMany(Product, {
-   foreignKey: 'category_id' });
+//players belongs to teams.
+Players.belongsTo(Teams, {
+   foreignKey: 'teams_id',
+})
 
-// Products belongToMany Tags (through ProductTag)
-Product.belongsToMany(Tag, {
-   through: ProductTag,
-   foreignKey: 'product_id' });
+Roster.hasMany(Players, {
+   foreignKey: 'roster_id',
+   onDelete: "CASCADE",
+})
 
-// Tags belongToMany Products (through ProductTag)
-Tag.belongsToMany(Product, {
-   through: ProductTag,
-   foreignKey: 'tag_id' });
-
--------------------------------------------------------*/
-
+Players.belongsTo(Roster, {
+   foreignKey: 'roster_id',
+})
 
 
 module.exports = {
@@ -36,3 +42,4 @@ module.exports = {
      Players,
      Roster,
 };
+
