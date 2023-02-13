@@ -1,7 +1,8 @@
 # CFB Roster Builder
 
 ## Description
-A roster builder to keep track your favorite players on game day.
+A roster builder to keep track your favorite University of Georgia players on game day. This product will tell you a player's first name, last name, and the player's positions. You can also add muiltiple players to a roster to help you keep track of each player your interested in. 
+
 
   ## Table of Contents 
   * [Installation](#installation)
@@ -22,3 +23,9 @@ A roster builder to keep track your favorite players on game day.
   
   ## Questions 
   If you have any questions about the repo, open an issue or contact a dev below!
+
+  ## Developers  
+  - Jacob Hester
+  - Kasen Brugh
+  - Junho Kim
+  - Noah Berg

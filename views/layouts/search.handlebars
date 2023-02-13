@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CFB Roster Builder</title>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+  <!-- As a heading -->
+<nav class="navbar bg-body-tertiary">
+  <div class="container-fluid" style="text-align:center; font-size:300%;">
+    <span class="navbar-brand mb-0 h1">Adding a player</span>
+  </div>
+</nav>
+</head>
+
+<br>
+
+<body>
+  <div class="row mb-3" style="text-align:center; font-size:150%;">
+    <label for="txtName" class="col-sm-2 col-form-label col-form-label-sm">Name</label>
+    <div class="col-sm-10">
+      <input type="input" class="form-control form-control-sm" id="txtName" placeholder="Required">
+    </div>
+  </div>
+  <br>
+  <div class="row mb-3" style="text-align:center; font-size:150%;">
+    <label for="txtPosition" class="col-sm-2 col-form-label">Position</label>
+    <div class="col-sm-10">
+      <input type="input" class="form-control form-control-lg" id="txtPosition" placeholder="Optional">
+    </div>
+  </div>
+  <br>
+  <div class="row" style="text-align:center; font-size:150%;">
+    <label for="txtTeam" class="col-sm-2 col-form-label col-form-label-lg">Team</label>
+    <div class="col-sm-10">
+      <input type="input" class="form-control form-control-lg" id="txtTeam" placeholder="Optional">
+    </div>
+  </div>
+  <br>
+  <div class="row" style="text-align:center; font-size:150%;">
+    <label for="txtYear" class="col-sm-2 col-form-label col-form-label-lg">Year</label>
+    <div class="col-sm-10">
+      <input type="input" class="form-control form-control-lg" id="txtYear" placeholder="Optional">
+    </div>
+  </div>
+  <br>
+  <div class="d-grid gap-2 col-6 mx-auto" style="text-align:center; font-size:100%;">
+    <button id="btnSubmit" class="btn btn-primary" type="button">Submit</button>
+  </div>
+
+
+</body>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"> </script>
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+<script>
+  $.getJSON('../../seeds/playerDataUGA.json', function(data) {
+    var rosterNames = [];
+    var rosterData = [];
+    for (let i = 0; i < data.length; i++) {
+      rosterNames.push(data[i].firstName + ' ' + data[i].lastName);
+      rosterData.push(data[i]);
+    }
+    $( "#txtName" ).autocomplete({
+      source: rosterNames
+      , change: function(event, ui) {
+        for (let i = 0; i < rosterData.length; i++) {
+          if (ui.item.value === (rosterData[i].firstName + ' ' + rosterData[i].lastName)) {
+            $('#txtPosition').val(rosterData[i].position);
+            $('#txtTeam').val(rosterData[i].team);
+            $('#txtYear').val(rosterData[i].year);
+            return;
+          }
+        }
+      }
+    });
+    
+  });
+  // $( "#txtName" ).autocomplete({
+  //     source: function( request, response ) {
+  //       $.ajax( {
+  //         url: "../../seeds/playerDataUGA.json",
+  //         dataType: "json",
+  //         data: {
+  //           term: request.term
+  //         },
+  //         success: function( data ) {
+  //           response( data );
+  //           debugger;
+  //         }
+  //       } );
+  //     },
+  //     minLength: 2,
+  //     select: function( event, ui ) {
+  //       log( "Selected: " + ui.item.value + " aka " + ui.item.id );
+  //     }
+  //   });
+  $('#txtName').on('change', 'input', function(value) {
+    debugger;
+  });
+</script>
+</html>

@@ -23,6 +23,7 @@ if (process.env.JAWSDB_URL) {
     }
   );
 }
+
 /---------------------------------------------------------*/
 
 const sequelize = new Sequelize(
