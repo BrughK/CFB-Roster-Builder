@@ -17,6 +17,20 @@ app.set("view engine", "handlebars");
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
+const sess = {
+  secret: 'Go Ask Alice',
+  // Express session will use cookies by default, but we can specify options for those cookies by adding a cookies property to our session options.
+  resave: false,
+  saveUninitialized: true,
+  // Sets up session store
+  store: new SequelizeStore({
+    db: sequelize,
+  }),
+};
+app.use(session(sess));
+
+
+
 
 app.use(routes);
 
