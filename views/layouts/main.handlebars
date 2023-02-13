@@ -45,7 +45,11 @@
       <div class="navbar-item">
         <div class="buttons">
           <a class="button is-link"><strong>Sign up</strong></a>
-          <a class="button is-link"><strong>Login</strong></a>
+          {{#if loggedIn}}
+          <a class="button is-link" id="logout"><strong>Logout</strong></a>
+          {{#else}}
+          <a href="/login" class="button is-link"><strong>Login</strong></a>
+          {{/if}}
         </div>
       </div>
     </div>
@@ -54,7 +58,12 @@
 
 <body>
   {{{body}}}
+  
+{{#if loggedIn}}
+  <script src="/js/logout.js"></script>
+{{/if}}
 </body>
+
 <footer class="footer has-background-link mt-5">
   <div class="content has-text-centered has-text-white">
     <p>A <strong class="has-text-white">Bulma</strong> site by <a class="has-text-white" href="https://github.com/BrughK/CFB-Roster-Builder">Group 8</a>.</p>
