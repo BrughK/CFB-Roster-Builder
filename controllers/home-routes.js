@@ -1,7 +1,5 @@
 const router = require('express').Router();
 
-
-
 /*-------------------------------------------------------
 example from module:
 
@@ -19,9 +17,6 @@ router.get('/painting/:id', async (req, res) => {
 });
 
 --------------------------------------------------------*/
-
-
-
 
 // Login route
 router.get('/login', (req, res) => {
