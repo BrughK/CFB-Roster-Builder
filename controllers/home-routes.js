@@ -1,4 +1,4 @@
-const router = require('express').Router
+const router = require('express').Router();
 
 
 
@@ -29,7 +29,9 @@ router.get('/login', (req, res) => {
       res.redirect('/');
       return;
     }
-    res.render('login');
+    res.render('login', {
+      loggedIn: req.session.loggedIn,
+    });
   });
   
   module.exports = router;
