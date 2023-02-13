@@ -8,11 +8,12 @@ const apiKey = process.env.API_KEY;
 const fs = require('fs');
 var cfb = require('cfb.js');
 var defaultClient = cfb.ApiClient.instance;
+require('dotenv').config();
 
 
 // Configure API key authorization: ApiKeyAuth
 var ApiKeyAuth = defaultClient.authentications['ApiKeyAuth'];
-ApiKeyAuth.apiKey = apiKey;
+ApiKeyAuth.apiKey = process.env.API_KEY;
 
 var api = new cfb.TeamsApi()
 
