@@ -1,6 +1,4 @@
-const router = require('express').Router
-
-
+const router = require("express").Router();
 
 /*-------------------------------------------------------
 example from module:
@@ -20,16 +18,13 @@ router.get('/painting/:id', async (req, res) => {
 
 --------------------------------------------------------*/
 
-
-
-
 // Login route
-router.get('/login', (req, res) => {
-    if (req.session.loggedIn) {
-      res.redirect('/');
-      return;
-    }
-    res.render('login');
-  });
-  
-  module.exports = router;
+router.get("/login", (req, res) => {
+  if (req.session.loggedIn) {
+    res.redirect("/");
+    return;
+  }
+  res.render("login");
+});
+
+module.exports = router;
