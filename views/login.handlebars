@@ -3,6 +3,7 @@
         {{!-- Login Box--}}
         <div class="columns is-flex is-flex-direction-column box" style="height: 435px; margin-bottom: 0px; margin-top: 0px; margin-right: 0px; margin-left: 0px;">
             <h2 class="title has-text-dark has-text-centered">Login</h2>
+            <form ="form login-form">
             <div class="column p-2">
                 <label for="email">Email</label>
                 <div class="control has-icons-left">
@@ -25,16 +26,18 @@
             <div class="column">
                 <button class="button is-link is-fullwidth" type="submit">Login</button>
             </div>
+            </form>
             
         </div>
         {{!-- Sign Up Box --}}
         <div class="columns is-flex is-flex-direction-column box m-5">
             <section>
                 <h2 class="title has-text-dark has-text-centered">Signup</h2>
+            <form class="form signup-form">
             <div class="column p-2">
                 <label for="email">Username</label>
                 <div class="control has-icons-left">
-                <input type="email" placeholder="e.g. bobsmith@gmail.com" class="input" required>
+                <input type="username" placeholder="e.g. bobsmith@gmail.com" class="input" required>
                 <span class="icon is-small is-left">
                   <i class="ri-folder-user-fill"></i>
                 </span>
@@ -62,6 +65,7 @@
             <div class="column">
                 <button class="button is-link is-fullwidth" type="submit">Sign Up!</button>
             </div>
+            </form>
             </section>
         </div>
     </div>
@@ -69,3 +73,4 @@
 
 
 
+<scrip src="../public/js/login.js"></scrip>
