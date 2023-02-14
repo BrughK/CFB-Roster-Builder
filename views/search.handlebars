@@ -1,0 +1,56 @@
+<div class="card">
+  <div class="card-header">
+    <div class="card-header-title">
+      Search For A Player
+    </div>
+  </div>
+  <div class="card-content">
+    <form id="search-form">
+      <div class="field">
+        <label class="label">Name</label>
+        <div class="control">
+          <input class="input" type="text" name="name" value="Required">
+        </div>
+      </div>
+      <div class="field">
+        <label class="label">Team</label>
+        <div class="control">
+          <input class="input" type="text" name="team" value="Optional">
+        </div>
+      </div>
+      <div class="field">
+        <label class="label">Position</label>
+        <div class="control">
+          <input class="input" type="text" name="position" value="Optional">
+        </div>
+      </div>
+      <div class="field">
+        <label class="label">Year</label>
+        <div class="control">
+          <input class="input" type="text" name="year" value="Optional">
+        </div>
+      </div>
+      <div class="field is-grouped">
+        <div class="control">
+          <button type="submit" class="button is-primary" id="search-button">Search</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script src="/js/playerSearch.js"></script>
+<script>
+  const form = document.querySelector('#search-form');
+  const searchButton = document.querySelector('#search-button');
+  
+  form.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const name = form.querySelector('input[name="name"]').value;
+    const team = form.querySelector('input[name="team"]').value;
+    const position = form.querySelector('input[name="position"]').value;
+    const year = form.querySelector('input[name="year"]').value;
+    const nuts = getPlayer(name, team, position, year);
+    console.log(nuts);
+  });
+</script>
