@@ -7,25 +7,25 @@ Players.init(
     {
         id: {
             type: DataTypes.INTEGER,
-            allolwNull: false,
+            allowNull: false,
             primaryKey: true,
             autoIncrement: true,
         },
-        firstname: {
+        first_name: {
             type: DataTypes.STRING,
-            allolwNull: false,
+            allowNull: false,
         },
-        lastname: {
+        last_name: {
             type: DataTypes.STRING,
-            allolwNull: false,
+            allowNull: false,
         },
         jersey: {
             type: DataTypes.INTEGER,
-            allolwNull: false,
+            allowNull: false,
         },
         position: {
             type: DataTypes.STRING,
-            allolwNull: false,
+            allowNull: false,
         },
         teamsId: {
             type: DataTypes.INTEGER,
