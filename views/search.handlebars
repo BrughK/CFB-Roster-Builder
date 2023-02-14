@@ -44,12 +44,9 @@
 
 
 
-<script src="/js/playerSearch.js"></script>
 <script>
   const form = document.querySelector('#search-form');
   const searchButton = document.querySelector('#search-button');
-
-
 
   function createPlayerCard(player) {
   const card = document.createElement('div');
@@ -79,6 +76,11 @@
   playerPosition.textContent = `Position: ${player.position}`;
   mediaContent.appendChild(playerPosition);
 
+  const playerJersey = document.createElement('p');
+  playerJersey.classList.add('subtitle', 'is-6');
+  playerJersey.textContent = `Jersey: ${player.jersey}`;
+  mediaContent.appendChild(playerJersey);
+
   media.appendChild(mediaContent);
   cardContent.appendChild(media);
 
@@ -88,9 +90,31 @@
   const saveButton = document.createElement('button');
   saveButton.classList.add('button', 'is-primary');
   saveButton.textContent = 'Save';
-  saveButton.addEventListener('click', () => {
+  saveButton.addEventListener('click',async () => {
     // handle save logic here
-  });
+	const data = {
+    firstName: player.firstName,
+    lastName: player.lastName,
+    team: player.team,
+    position: player.position,
+    jersey: player.jersey
+  };
+  try {
+    const urlencodedData = new URLSearchParams(data).toString();
+    const response = await fetch('/players', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      body: urlencodedData
+    });
+    const responseData = await response.json();
+    console.log('Player data saved:', responseData);
+  } catch (error) {
+    console.error('Error saving player data:', error);
+  }
+  	});
+
   content.appendChild(saveButton);
 
   cardContent.appendChild(content);

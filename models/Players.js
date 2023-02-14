@@ -11,11 +11,11 @@ Players.init(
             primaryKey: true,
             autoIncrement: true,
         },
-        firstname: {
+        first_name: {
             type: DataTypes.STRING,
             allolwNull: false,
         },
-        lastname: {
+        last_name: {
             type: DataTypes.STRING,
             allolwNull: false,
         },
