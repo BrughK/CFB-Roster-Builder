@@ -6,6 +6,8 @@ const routes = require("./controllers");
 const sequelize = require("./config/connection");
 const SequelizeStore = require("connect-session-sequelize")(session.Store);
 const dotenv = require('dotenv');
+const {Players} = require('./models');
+
 dotenv.config();
 
 global.API_KEY = process.env.API_KEY;
@@ -27,18 +29,15 @@ const sess = {
   resave: false,
   saveUninitialized: true,
   // Sets up session store
-  store: new SequelizeStore({
-    db: sequelize,
-  }),
+  //store: new SequelizeStore({
+ //   db: sequelize,
+  //}),
 };
 app.use(session(sess));
 
 
 // this POST request handles the API call made in search.handlebars
 app.post('/playersearch', async (req, res) => {
-
-  console.log(req.body.name);
-  console.log(req.body.team);
 
   const { name, team, position, year } = req.body;
 
@@ -54,7 +53,7 @@ app.post('/playersearch', async (req, res) => {
     });
     
     const data = await response.json();
-    console.log(data);
+    
 
     res.send(data);
   } catch (error) {
@@ -62,6 +61,31 @@ app.post('/playersearch', async (req, res) => {
     res.status(500).send('An error occurred while retrieving player data.');
   }
 });
+
+
+app.post('/players', async (req, res) => {
+  try {
+    //const { firstName, lastName, team, position, jersey } = req.body;
+    const dbUserData = await Players.create({
+      first_name: req.body.firstName, 
+      last_name: req.body.lastName, 
+      team: req.body.team, 
+      position: req.body.position, 
+      jersey: req.body.jersey });
+    res.status(201).json({ dbUserData });
+  } catch (error) {
+    console.error('Error inserting player data:', error);
+    res.status(500).send('An error occurred while inserting player data.');
+  }
+});
+
+
+
+
+
+
+
+
 
 
 
