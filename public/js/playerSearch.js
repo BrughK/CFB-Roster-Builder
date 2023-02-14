@@ -11,6 +11,7 @@
               'Accept': 'application/json',
               'Authorization': API_KEY
             },
+            mode: 'no-cors'
           });
           const data = await response.json();
           console.log('Game data:', data);

@@ -34,6 +34,33 @@ const sess = {
 app.use(session(sess));
 
 
+// this GET request handles the API call made in search.handlebars
+app.get('/players', async (req, res) => {
+  const searchTerm = req.query.searchTerm;
+  const position = req.query.position;
+  const team = req.query.team;
+  const year = req.query.year;
+
+  const apiUrl = `https://api.collegefootballdata.com/player/search?searchTerm=${searchTerm}&position=${position}&team=${team}&year=${year}`;
+
+  try {
+    const response = await fetch(apiUrl, {
+      method: 'GET',
+      headers: {
+        'Accept': 'application/json',
+        'Authorization': API_KEY
+      }
+    });
+
+    const data = await response.json();
+
+    res.send(data);
+  } catch (error) {
+    console.error('Error retrieving player data:', error);
+    res.status(500).send('An error occurred while retrieving player data.');
+  }
+});
+
 
 
 app.use(routes);

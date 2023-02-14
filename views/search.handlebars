@@ -49,14 +49,20 @@
   const form = document.querySelector('#search-form');
   const searchButton = document.querySelector('#search-button');
   
-  form.addEventListener('submit', (event) => {
+  form.addEventListener('submit', async (event) => {
     event.preventDefault();
     const name = form.querySelector('input[name="name"]').value;
     const newName = encodeURIComponent(name);
     const team = form.querySelector('input[name="team"]').value;
     const position = form.querySelector('input[name="position"]').value;
     const year = form.querySelector('input[name="year"]').value;
-    const nuts = getPlayer(newName, position, team, year);
-    console.log(nuts);
+	
+	try {
+		const response = await fetch(`/players?searchTerm=${newName}&position=${position}&team=${team}&year=${year}`);
+		const data = await response.json();
+		console.log('Player data:', data);
+  } catch (error) {
+    	console.error('Error retrieving player data:', error);
+  }
   });
 </script>
