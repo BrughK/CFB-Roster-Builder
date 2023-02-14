@@ -47,10 +47,11 @@
   form.addEventListener('submit', (event) => {
     event.preventDefault();
     const name = form.querySelector('input[name="name"]').value;
+    const newName = encodeURIComponent(name);
     const team = form.querySelector('input[name="team"]').value;
     const position = form.querySelector('input[name="position"]').value;
     const year = form.querySelector('input[name="year"]').value;
-    const nuts = getPlayer(name, team, position, year);
+    const nuts = getPlayer(newName, position, team, year);
     console.log(nuts);
   });
 </script>
