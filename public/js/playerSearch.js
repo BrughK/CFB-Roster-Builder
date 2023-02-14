@@ -9,9 +9,8 @@
             method: 'GET',
             headers: {
               'Accept': 'application/json',
-              'Authorization': "Bearer Ztn0VfU0cfZ0GaF/wDYhPTgQqXOvGa6mEb1ht26W0RyYW3aIg9BppDJW/ZC4KMza"
+              'Authorization': API_KEY
             },
-            mode: 'no-cors'
           });
           const data = await response.json();
           console.log('Game data:', data);
