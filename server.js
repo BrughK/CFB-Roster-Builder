@@ -36,7 +36,7 @@ app.use(session(sess));
 
 // this POST request handles the API call made in search.handlebars
 app.post('/playersearch', async (req, res) => {
-  
+
   console.log(req.body.name);
   console.log(req.body.team);
 
@@ -52,8 +52,9 @@ app.post('/playersearch', async (req, res) => {
         'Authorization': API_KEY
       }
     });
-    console.log(data);
+    
     const data = await response.json();
+    console.log(data);
 
     res.send(data);
   } catch (error) {
