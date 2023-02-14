@@ -26,4 +26,8 @@ router.get("/roster", (req, res) => {
   res.render("roster");
 });
 
+router.get("/forgotpassword", (req, res) => {
+  res.render("forgotpassword");
+});
+
 module.exports = router;
