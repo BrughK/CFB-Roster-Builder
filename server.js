@@ -65,9 +65,14 @@ app.post('/playersearch', async (req, res) => {
 
 app.post('/players', async (req, res) => {
   try {
-    const { firstName, lastName, team, position, jersey } = req.body;
-    await Players.create({ firstName, lastName, team, position, jersey });
-    res.status(201).json({ firstName, lastName, team, position, jersey });
+    //const { firstName, lastName, team, position, jersey } = req.body;
+    const dbUserData = await Players.create({
+      first_name: req.body.firstName, 
+      last_name: req.body.lastName, 
+      team: req.body.team, 
+      position: req.body.position, 
+      jersey: req.body.jersey });
+    res.status(201).json({ dbUserData });
   } catch (error) {
     console.error('Error inserting player data:', error);
     res.status(500).send('An error occurred while inserting player data.');
