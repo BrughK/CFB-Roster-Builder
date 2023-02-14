@@ -36,6 +36,10 @@ app.use(session(sess));
 
 // this POST request handles the API call made in search.handlebars
 app.post('/playersearch', async (req, res) => {
+  
+  console.log(req.body.name);
+  console.log(req.body.team);
+
   const { name, team, position, year } = req.body;
 
   const apiUrl = `https://api.collegefootballdata.com/player/search?searchTerm=${name}&position=${position}&team=${team}&year=${year}`;
@@ -48,7 +52,7 @@ app.post('/playersearch', async (req, res) => {
         'Authorization': API_KEY
       }
     });
-
+    console.log(data);
     const data = await response.json();
 
     res.send(data);
