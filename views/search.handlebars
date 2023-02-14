@@ -1,43 +1,48 @@
-<div class="card">
-  <div class="card-header">
-    <div class="card-header-title">
-      Search For A Player
-    </div>
-  </div>
-  <div class="card-content">
-    <form id="search-form">
-      <div class="field">
-        <label class="label">Name</label>
-        <div class="control">
-          <input class="input" type="text" name="name" value="Required">
-        </div>
-      </div>
-      <div class="field">
-        <label class="label">Team</label>
-        <div class="control">
-          <input class="input" type="text" name="team" value="Optional">
-        </div>
-      </div>
-      <div class="field">
-        <label class="label">Position</label>
-        <div class="control">
-          <input class="input" type="text" name="position" value="Optional">
-        </div>
-      </div>
-      <div class="field">
-        <label class="label">Year</label>
-        <div class="control">
-          <input class="input" type="text" name="year" value="Optional">
-        </div>
-      </div>
-      <div class="field is-grouped">
-        <div class="control">
-          <button type="submit" class="button is-primary" id="search-button">Search</button>
-        </div>
-      </div>
-    </form>
-  </div>
+{{!-- bulma hero to give background --}}
+<div class="hero is-link">
+	<div class="hero-body is-justify-content-center is-align-items-center">
+		<div class="card">
+			<h2 class="title has-text-dark has-text-centered pt-4 mb-0">Search For A Player:</h2>
+			<div class="card-content">
+				{{!-- Player Search Form --}}
+				<form id="search-form">
+					<div class="field">
+						<label class="label">Name</label>
+						<div class="control">
+							<input class="input" type="text" name="name" placeholder="Required">
+						</div>
+					</div>
+					<div class="field">
+						<label class="label">Team</label>
+						<div class="control">
+							<input class="input" type="text" name="team" placeholder="Optional">
+						</div>
+					</div>
+					<div class="field">
+						<label class="label">Position</label>
+						<div class="control">
+							<input class="input" type="text" name="position" placeholder="Optional">
+						</div>
+					</div>
+					<div class="field">
+						<label class="label">Year</label>
+						<div class="control">
+							<input class="input" type="text" name="year" placeholder="Optional">
+						</div>
+					</div>
+          {{!-- Submit Button --}}
+					<div class="field is-grouped is-justify-content-center is-align-items-center">
+						<div class="control">
+							<button type="submit" class="button is-link is-large" id="search-button">Search</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
 </div>
+
+
 
 <script src="/js/playerSearch.js"></script>
 <script>

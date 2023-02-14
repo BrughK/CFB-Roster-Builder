@@ -1,4 +1,4 @@
-const router = require('express').Router();
+const router = require("express").Router();
 
 /*-------------------------------------------------------
 example from module:
@@ -19,30 +19,23 @@ router.get('/painting/:id', async (req, res) => {
 --------------------------------------------------------*/
 
 // Login route
-router.get('/login', (req, res) => {
-    if (req.session.loggedIn) {
-      res.redirect('/');
-      return;
-    }
-    res.render('login', {
-      loggedIn: req.session.loggedIn,
-    });
+router.get("/login", (req, res) => {
+  if (req.session.loggedIn) {
+    res.redirect("/");
+    return;
+  }
+  res.render("login", {
+    loggedIn: req.session.loggedIn,
   });
+});
 
+router.get("/playersearch", async (req, res) => {
+  try {
+    res.render("search");
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
 
-  router.get('/playersearch', async (req, res) => {
-    try {
-  
-      res.render('playersearch');
-    } catch (err) {
-      console.log(err);
-      res.status(500).json(err);
-    }
-  });
-
-
-
-
-
-  
-  module.exports = router;
+module.exports = router;
