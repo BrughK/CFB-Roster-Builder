@@ -1,11 +1,12 @@
-// this user table from the module can be refactored 
-
-
-
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
+const bcrypt = require('bcrypt');
 
-class User extends Model {}
+class User extends Model {
+  checkPassword(loginPw) {
+    return bcrypt.compareSync(loginPw, this.password);
+  }
+}
 
 User.init(
   {
@@ -16,12 +17,7 @@ User.init(
       autoIncrement: true,
     },
 
-    firstname: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-
-    lastname: {
+    username: {
       type: DataTypes.STRING,
       allowNull: false,
     },
@@ -48,12 +44,6 @@ User.init(
       beforeCreate: async (newPw) => {
         newPw.password = await bcrypt.hash(newPw.password, 10);
         return newPw;
-      },
-      beforeUpdate: async (updatePw) => {
-        if (updatePw.password){
-        updatePw.password = await bcrypt.hash(updatePw.password, 10);
-        }
-        return updatePw
       },
     },
       sequelize,
