@@ -34,14 +34,11 @@ const sess = {
 app.use(session(sess));
 
 
-// this GET request handles the API call made in search.handlebars
-app.get('/players', async (req, res) => {
-  const searchTerm = req.query.searchTerm;
-  const position = req.query.position;
-  const team = req.query.team;
-  const year = req.query.year;
+// this POST request handles the API call made in search.handlebars
+app.post('/players', async (req, res) => {
+  const { name, team, position, year } = req.body;
 
-  const apiUrl = `https://api.collegefootballdata.com/player/search?searchTerm=${searchTerm}&position=${position}&team=${team}&year=${year}`;
+  const apiUrl = `https://api.collegefootballdata.com/player/search?searchTerm=${name}&position=${position}&team=${team}&year=${year}`;
 
   try {
     const response = await fetch(apiUrl, {

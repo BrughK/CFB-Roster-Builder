@@ -50,19 +50,27 @@
   const searchButton = document.querySelector('#search-button');
   
   form.addEventListener('submit', async (event) => {
-    event.preventDefault();
-    const name = form.querySelector('input[name="name"]').value;
-    const newName = encodeURIComponent(name);
-    const team = form.querySelector('input[name="team"]').value;
-    const position = form.querySelector('input[name="position"]').value;
-    const year = form.querySelector('input[name="year"]').value;
-	
-	try {
-		const response = await fetch(`/players?searchTerm=${newName}&position=${position}&team=${team}&year=${year}`);
-		const data = await response.json();
-		console.log('Player data:', data);
+  event.preventDefault();
+  const name = form.querySelector('input[name="name"]').value;
+  const team = form.querySelector('input[name="team"]').value;
+  const position = form.querySelector('input[name="position"]').value;
+  const year = form.querySelector('input[name="year"]').value;
+
+  const data = { name, team, position, year };
+
+  try {
+    const response = await fetch('/players', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    });
+
+    const responseData = await response.json();
+    console.log('Player data:', responseData);
   } catch (error) {
-    	console.error('Error retrieving player data:', error);
+    console.error('Error retrieving player data:', error);
   }
   });
 </script>
