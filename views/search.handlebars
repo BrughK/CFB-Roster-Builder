@@ -59,7 +59,7 @@
   const data = { name, team, position, year };
 
   try {
-    const response = await fetch('/players', {
+    const response = await fetch('/playersearch', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

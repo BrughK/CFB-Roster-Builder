@@ -35,7 +35,7 @@ app.use(session(sess));
 
 
 // this POST request handles the API call made in search.handlebars
-app.post('/players', async (req, res) => {
+app.post('/playersearch', async (req, res) => {
   const { name, team, position, year } = req.body;
 
   const apiUrl = `https://api.collegefootballdata.com/player/search?searchTerm=${name}&position=${position}&team=${team}&year=${year}`;
