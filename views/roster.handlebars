@@ -3,35 +3,26 @@
 		<h1 class="title">Roster View</h1>
 	</div>
 </section>
-{{!-- Each PLayer Card --}}
+{{!-- Each Player Card --}}
 <section class="section">
 	<div class="container ">
-		{{!-- {{#each rosters as |roster|}} --}}
-		<div class="columns">
-			<div class="column has-background-link has-text-white">
-				<div class="card">
-					<div class="card-content">
-						<div class="media">
-							<div class="media-left">
-								<figure class="image is-48x48">
-									<img src="" alt="Player img">
-								</figure>
-							</div>
-							<div class="media-content">
-								<p class="title is-4">Player Name Here</p>
-								<p class="subtitle is-6">Team Here</p>
-							</div>
-						</div>
-						<div class="content">
-							General Stats or something here
-                            General Stats or something here
-                            General Stats or something here
-                            General Stats or something here
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		{{!-- {{/each}} --}}
+    {{#each players as |players|}}
+        <div class="column has-background-link has-text-white">
+            <div class="card">
+                <div class="card-content">
+                    <div class="media">
+                        <div class="media-content">
+                            <p class="title is-4">{{first_name}} {{last_name}}</p>
+                        </div>
+                    </div>
+                    <div class="content">
+                        <p>Jersey Number: {{jersey}}</p>
+                        <p>Position: {{position}}</p>
+						<p>Team: {{teamsId}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {{/each}}
 	</div>
 </section>
