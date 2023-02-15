@@ -102,6 +102,7 @@
 		};
 		try {
 			const urlencodedData = new URLSearchParams(data).toString();
+			console.log(`url data = ` urlencodedData);
 			const response = await fetch('/players', {
 			method: 'POST',
 			headers: {
