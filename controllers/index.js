@@ -5,12 +5,22 @@ const Players = require("../models/players");
 
 router.use("/", homeRoutes);
 router.use("/api", apiRoutes);
+const withAuth = require('../utils/auth');
 
-router.get("/", (req, res) => {
-  res.render("homepage");
+
+router.get('/',  async (req, res) => {
+  try {
+
+    // Pass loggedIn variable to template context
+    res.render('homepage', { loggedIn: req.session.loggedIn });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
 });
 
-router.get("/roster", async (req, res) => {
+
+router.get("/roster", withAuth, async (req, res) => {
   const playerData = await Players.findAll().catch((err) => {
     res.json(err);
   });

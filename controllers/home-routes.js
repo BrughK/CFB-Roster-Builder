@@ -1,4 +1,5 @@
 const router = require("express").Router();
+const withAuth = require('../utils/auth');
 
 // Login route
 router.get("/login", (req, res) => {
@@ -12,7 +13,7 @@ router.get("/login", (req, res) => {
 });
 
 // Player Search Route
-router.get("/playersearch", async (req, res) => {
+router.get("/playersearch", withAuth, async (req, res) => {
   try {
     res.render("search");
   } catch (err) {
