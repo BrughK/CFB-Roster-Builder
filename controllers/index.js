@@ -12,15 +12,6 @@ router.get("/", (req, res) => {
   res.render("homepage");
 });
 
-// router.get("/roster", async (req, res) => {
-//   const rosterData = await Roster.findAll().catch((err) => {
-//     res.json(err);
-//   });
-
-//   const rosters = rosterData.map((roster) => roster.get({ plain: true }));
-
-//   res.render("roster", { rosters });
-// });
 
 router.get("/roster", (req, res) => {
   res.render("roster");

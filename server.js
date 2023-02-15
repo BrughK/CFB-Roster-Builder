@@ -79,16 +79,6 @@ app.post('/players', async (req, res) => {
   }
 });
 
-
-
-
-
-
-
-
-
-
-
 app.use(routes);
 
 sequelize.sync({ force: false }).then(() => {
