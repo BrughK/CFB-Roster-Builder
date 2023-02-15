@@ -1,6 +1,5 @@
 const router = require("express").Router();
 
-
 // Login route
 router.get("/login", (req, res) => {
   if (req.session.loggedIn) {
@@ -12,6 +11,7 @@ router.get("/login", (req, res) => {
   });
 });
 
+// Player Search Route
 router.get("/playersearch", async (req, res) => {
   try {
     res.render("search");
