@@ -7,6 +7,8 @@ const sequelize = require("./config/connection");
 const dotenv = require("dotenv");
 const { Players } = require("./models");
 
+
+
 dotenv.config();
 
 global.API_KEY = process.env.API_KEY;
@@ -19,17 +21,20 @@ const hbs = exphbs.create({});
 app.engine("handlebars", hbs.engine);
 app.set("view engine", "handlebars");
 
+
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
 const sess = {
   secret: "Go Ask Alice",
-  // Express session will use cookies by default, but we can specify options for those cookies by adding a cookies property to our session options.
   resave: false,
   saveUninitialized: true,
-  // Sets up session store
+  cookie: {
+    maxAge: 15 * 60 * 1000 // 15 minutes in milliseconds
+  },
   //store: new SequelizeStore({
-  //   db: sequelize,
+  //  db: sequelize,
   //}),
 };
 app.use(session(sess));

@@ -45,76 +45,76 @@
 
 
 <script>
-	// Append player search to page and create save button to allow to send to DB
   const form = document.querySelector('#search-form');
   const searchButton = document.querySelector('#search-button');
 
   function createPlayerCard(player) {
-  const card = document.createElement('div');
-  card.classList.add('card', 'mt-3', 'mb-3');
+  	const card = document.createElement('div');
+  	card.classList.add('card', 'mt-3', 'mb-3');
 
-  const cardContent = document.createElement('div');
-  cardContent.classList.add('card-content');
+  	const cardContent = document.createElement('div');
+  	cardContent.classList.add('card-content');
 
-  const media = document.createElement('div');
-  media.classList.add('media');
+  	const media = document.createElement('div');
+  	media.classList.add('media');
 
-  const mediaContent = document.createElement('div');
-  mediaContent.classList.add('media-content');
+  	const mediaContent = document.createElement('div');
+  	mediaContent.classList.add('media-content');
 
-  const playerName = document.createElement('p');
-  playerName.classList.add('title', 'is-4' ,'has-text-dark');
-  playerName.textContent = `${player.firstName} ${player.lastName}`;
-  mediaContent.appendChild(playerName);
+	const playerName = document.createElement('p');
+	playerName.classList.add('title', 'is-4' ,'has-text-dark');
+	playerName.textContent = `${player.firstName} ${player.lastName}`;
+	mediaContent.appendChild(playerName);
 
-  const playerTeam = document.createElement('p');
-  playerTeam.classList.add('subtitle', 'is-6','has-text-dark');
-  playerTeam.textContent = `Team: ${player.team}`;
-  mediaContent.appendChild(playerTeam);
+	const playerTeam = document.createElement('p');
+	playerTeam.classList.add('subtitle', 'is-6','has-text-dark');
+	playerTeam.textContent = `Team: ${player.team}`;
+	mediaContent.appendChild(playerTeam);
 
-  const playerPosition = document.createElement('p');
-  playerPosition.classList.add('subtitle', 'is-6','has-text-dark');
-  playerPosition.textContent = `Position: ${player.position}`;
-  mediaContent.appendChild(playerPosition);
+	const playerPosition = document.createElement('p');
+	playerPosition.classList.add('subtitle', 'is-6','has-text-dark');
+	playerPosition.textContent = `Position: ${player.position}`;
+	mediaContent.appendChild(playerPosition);
 
-  const playerJersey = document.createElement('p');
-  playerJersey.classList.add('subtitle', 'is-6','has-text-dark');
-  playerJersey.textContent = `Jersey: ${player.jersey}`;
-  mediaContent.appendChild(playerJersey);
+	const playerJersey = document.createElement('p');
+	playerJersey.classList.add('subtitle', 'is-6','has-text-dark');
+	playerJersey.textContent = `Jersey: ${player.jersey}`;
+	mediaContent.appendChild(playerJersey);
 
-  media.appendChild(mediaContent);
-  cardContent.appendChild(media);
+	media.appendChild(mediaContent);
+	cardContent.appendChild(media);
 
-  const content = document.createElement('div');
-  content.classList.add('content');
+	const content = document.createElement('div');
+	content.classList.add('content');
 
-  const saveButton = document.createElement('button');
-  saveButton.classList.add('button', 'is-link');
-  saveButton.textContent = 'Save';
-  saveButton.addEventListener('click',async () => {
-    // handle save logic here
-	const data = {
-    firstName: player.firstName,
-    lastName: player.lastName,
-    team: player.team,
-    position: player.position,
-    jersey: player.jersey
-  };
-  try {
-    const urlencodedData = new URLSearchParams(data).toString();
-    const response = await fetch('/players', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded'
-      },
-      body: urlencodedData
-    });
-    const responseData = await response.json();
-    console.log('Player data saved:', responseData);
-  } catch (error) {
-    console.error('Error saving player data:', error);
-  }
-  	});
+	const saveButton = document.createElement('button');
+	saveButton.classList.add('button', 'is-link');
+	saveButton.textContent = 'Save';
+
+		saveButton.addEventListener('click',async () => {
+			// handle save logic 
+			const data = {
+			firstName: player.firstName,
+			lastName: player.lastName,
+			team: player.team,
+			position: player.position,
+			jersey: player.jersey
+		};
+		try {
+			const urlencodedData = new URLSearchParams(data).toString();
+			const response = await fetch('/players', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/x-www-form-urlencoded'
+			},
+			body: urlencodedData
+			});
+			const responseData = await response.json();
+			console.log('Player data saved:', responseData);
+		} catch (error) {
+			console.error('Error saving player data:', error);
+		}
+			});
 
   content.appendChild(saveButton);
 
@@ -123,6 +123,12 @@
 
   return card;
 }
+
+
+
+
+
+
 
   form.addEventListener('submit', async (event) => {
 	event.preventDefault();
