@@ -45,7 +45,6 @@
 
 
 <script>
-	// Append player search to page and create save button to allow to send to DB
   const form = document.querySelector('#search-form');
   const searchButton = document.querySelector('#search-button');
 
@@ -103,7 +102,6 @@
 		};
 		try {
 			const urlencodedData = new URLSearchParams(data).toString();
-			console.log(`url data = ` urlencodedData);
 			const response = await fetch('/players', {
 			method: 'POST',
 			headers: {
@@ -125,6 +123,12 @@
 
   return card;
 }
+
+
+
+
+
+
 
   form.addEventListener('submit', async (event) => {
 	event.preventDefault();
