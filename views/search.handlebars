@@ -45,6 +45,7 @@
 
 
 <script>
+	// Append player search to page and create save button to allow to send to DB
   const form = document.querySelector('#search-form');
   const searchButton = document.querySelector('#search-button');
 
@@ -122,12 +123,6 @@
 
   return card;
 }
-
-
-
-
-
-
 
   form.addEventListener('submit', async (event) => {
 	event.preventDefault();
